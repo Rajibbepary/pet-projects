@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo.webp" type="image/x-icon">
+    <title>Peddy Projects</title>
+    <!-- daisyui cdn link -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.13/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- font-awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+<body>
+ 
+     <!----creat navbar here----->
+     <nav class="w-11/12 mx-auto flex justify-between items-center py-5">
+        <div class="flex gap-3 justify-center items-center">
+            <img class="w-6 h-6 max-sm:w-4 max-sm:h-4 " src="img/logo.webp" alt="" srcset="">
+            <h2 class="lg:text-2xl md:text-xl font-bold text-black">Peddy</h2>
+        </div>
+        <div class="flex lg:gap-5 md:gap-2 max-sm:gap-2 lg:text-base text-[#131313] font-semibold">
+            <a href="">Home</a>
+            <a href="">Shop</a>
+            <a href="">Contact</a>
+        </div>
+        <div>
+            <i class="fa-regular fa-user border rounded-full p-3"></i>
+        </div>
+    </nav>
+
+    <section class="flex mx-auto flex-col justify-center items-center w-11/12 lg:mt-9">
+        <!-- banner section    -->
+       <div>
+       <div class="items-center flex flex-col lg:gap-6 ">
+           <h3 class="text-[#7A7A7A] lg:text-xl font-semibold">Bringing Families Together ❤️‍🔥</h3>
+       <h1 class="lg:text-5xl max-sm:text-3xl font-bold text-black text-center"> Your Path to Adoption <br> Starts Here</h1>
+       </div>
+       <div class="flex flex-col items-center mt-5 gap-5">
+           <h5 class="text-center text-[#131313] max-sm:text-sm max-sm:w-[300px]">It is a long established fact that a reader will be distracted by the readable content of a page when looking <br> at its layout. The point of using Lorem Ipsum is that it has a.</h5>
+       <button class=" py-4 px-8 rounded-md font-medium bg-[#0e7a81] text-white">View More</button>
+       </div>
+       </div>
+       <!-- bnner img -->
+       <div class="lg:w-[700px] max-sm:w-[350px] mt-16 mb-14"  >
+       <img class="h-full w-full object-cover" src="img/pet.webp" alt="" srcset="">
+       </div>
+       
+       </section>
+       
+
+       <div>
+
+        <div class="flex flex-col justify-center items-center mx-auto  w-6/12 gap-4 mb-20">
+         <h1 class="text-3xl font-semibold text-black"> Adopt  Your  Best Friend</h1>
+         <p class="mb-4 text-gray-400">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+        </div>
+         <div id="btnContainer" class="flex justify-between max-sm:flex-row max-sm:py-3 max-sm:gap-2 w-11/12 mx-auto m-4"></div>
+     </div>
+
+<!-- pet category button here -->
+ <div id="pet-categories" class="flex gap-4 justify-center lg:justify-between items-center my-4 w-11/12 mx-auto">
+
+ </div>
+
+<!-- sort by price button -->
+ <div class="w-11/12 mx-auto flex items-center justify-between p-2">
+    <h3 class="font-bold text-lg">Best Deal For you</h3>
+    <button onclick="sort()" id="sortByPrice" class="btn bg-teal-600 text-white">Sort by Price</button>
+ </div>
+
+
+ <!-- creat and image section here -->
+ <div class="my-12 w-11/12 mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 px-2 ">
+        <!-- card section -->
+        <div class="lg:col-span-3">
+            <!--    spinner    -->
+                <div id="loader" class="hidden">
+                    <div class="relative flex justify-center items-center">
+                        <div class="absolute animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-teal-700"></div>
+                        <img src="img/logo.webp"  class="rounded-full ">
+                    </div>
+                </div>
+                <!-- cards -->
+                 <div id="all-pets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                 </div>
+        </div>
+         <!-- image section -->
+        <div id="likeds-pet" class="w-full h-fit rounded-xl border grid grid-cols-2 gap-4 p-2">
+            <!-- Dynamic pet images here -->
+        </div>
+
+    </div>
+ </div>
+
+ <!-- adopt modal -->
+
+ <!-- Open the modal using ID.showModal() method -->
+<dialog id="my_modal_5" class="modal  sm:modal-middle">
+  <div class="modal-box">
+   <div id="adoptedCard" class=" flex items-center justify-center flex-col bg-slate-50 px-4">
+    <i class="fa-regular fa-handshake  text-4xl text-pink-800  mt-3  " ></i>
+<h2 class="text-2xl lg:text-3xl font-bold my-2">Congratulations</h2>
+<p class="font-semibold my-3">Adoption will be done in</p>
+<p id="countdown-container" class="text-5xl mb-5 font-bold"> 3</p>
+   </div>
+    </div>
+  </div>
+</dialog>
+
+<!-- Open the modal using ID.showModal() method -->
+<button id="showModalData" class="btn hidden" onclick="costumModal.showModal()">open modal</button>
+<dialog id="costumModal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <div id="modal-content" class="">
+
+    </div>
+    <div class="modal-action flex flex-col justify-center items-center">
+      <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+        <button class="btn btn-wide font-bold">Concel</button>
+      </form>
+    </div>
+  </div>
+</dialog>
+
+
+<footer class="bg-black py-10 mt-12">
+
+    <div  class="w-11/12 mx-auto text-center text-white grid lg:grid-cols-3 max-sm:grid-cols-1">
+        <div class=" flex flex-col mx-auto">
+            <div class="flex gap-4 ">
+                <img src="img/logo.webp" alt="" srcset="">
+                <h3 class="text-2xl text-white font-bold">Peddy</h3>
+            </div>
+            <div class="text-sm text-[#D6D6D6] flex flex-col gap-1 mt-4 text-left ">
+                <P>Location: av. Washington 165, NY CA 54003</P>
+                <P> Phone: +31 85 964 47 25</P>
+            <P>Email:info@yourdomain.com</P>
+                <P>Openings hours: 9.00 AM -5.00 PM</P>
+            </div>
+            <div class="flex w-8 gap-2 mt-4 max-sm:text-right">
+                <img src="https://img.icons8.com/?size=96&id=uLWV5A9vXIPu&format=png" alt="" srcset="">
+                
+                <img src="https://img.icons8.com/?size=96&id=5MQ0gPAYYx7a&format=png" alt="" srcset="">
+                <img src="https://img.icons8.com/?size=96&id=32323&format=png" alt="" srcset="">
+                <img src="https://img.icons8.com/?size=96&id=19318&format=png" alt="" srcset="">
+            </div>
+        </div>
+     
+        <div class="flex flex-col gap-1 max-sm:mt-4">
+            <h3 class="mb-5 text-xl font-semibold">Useful Links</h3>
+            <p class="text-[#d3d4d4c4]">Home</p>
+            <p class="text-[#d3d4d4c4]">About Us</p>
+            <p class="text-[#d3d4d4c4]">Animals</p>
+            <p class="text-[#d3d4d4c4]">Foundation</p>
+            <p class="text-[#d3d4d4c4]">Contact</p>
+        </div>
+        <div class="max-sm:mt-4">
+            <h2 class="font-semibold text-xl">Drop a Message</h2>
+           <div class="py-3">
+            <input type="text" class="grow py-3 rounded-sm px-8 outline-none" placeholder="Enter Your Email" />
+           </div>
+              <button class="btn btn-wide px-8 py-2 text-white font-bold text-xl bg-[#0e7a81] outline-none">Subscribe</button>
+        </div>
+    </div>
+</footer>
+
+
+    <!-- exta javascript file link -->
+     <script src="load.js"></script>
+     <script src="index.js"></script>
+</body>
+</html>
